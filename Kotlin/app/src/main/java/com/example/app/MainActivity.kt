@@ -12,13 +12,13 @@ import com.example.core.utils.CacheUtils
 import com.example.core.utils.Utils
 import com.example.lesson.LessonActivity
 
-class MainActivity : AppCompatActivity() , View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val usernameKey = "username"
     private val passwordKey = "password"
-    private lateinit var et_username : EditText
-    private lateinit var et_password : EditText
-    private var et_code : EditText? = null
-    override fun onCreate(savedInstanceState : Bundle?) {
+    private lateinit var et_username: EditText
+    private lateinit var et_password: EditText
+    private var et_code: EditText? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         et_username = findViewById(R.id.et_username)
@@ -32,11 +32,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         img_code.setOnClickListener(this)
     }
 
-    override fun onClick(v : View) {
+    override fun onClick(v: View) {
         if (v is CodeView) {
             v.updateCode()
-        }
-        else if (v is Button) {
+        } else if (v is Button) {
             login()
         }
     }
@@ -45,20 +44,20 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         val username = et_username.text.toString()
         val password = et_password.text.toString()
         val code = et_code!!.text.toString()
-        val user = User(username , password , code)
+        val user = User(username, password, code)
         if (verify(user)) {
-            CacheUtils.save(usernameKey , username)
-            CacheUtils.save(passwordKey , password)
-            startActivity(Intent(this , LessonActivity::class.java))
+            CacheUtils.save(usernameKey, username)
+            CacheUtils.save(passwordKey, password)
+            startActivity(Intent(this, LessonActivity::class.java))
         }
     }
 
-    private fun verify(user : User) : Boolean {
-        if (user.username != null && user.username!!.length < 4) {
+    private fun verify(user: User): Boolean {
+        if (user.username?.length ?: 0 < 4) {
             Utils.toast("用户名不合法")
             return false
         }
-        if (user.password != null && user.password!!.length < 4) {
+        if (user.password?.length ?: 0 < 4) {
             Utils.toast("密码不合法")
             return false
         }

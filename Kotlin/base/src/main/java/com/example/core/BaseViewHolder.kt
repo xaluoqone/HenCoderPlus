@@ -7,10 +7,11 @@ import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import java.util.*
 
-abstract class BaseViewHolder(itemView : View) : ViewHolder(itemView) {
+abstract class BaseViewHolder(itemView: View) : ViewHolder(itemView) {
     @SuppressLint("UseSparseArrays")
-    private val viewHashMap : MutableMap<Int , View?> = HashMap()
-    protected fun <T : View?> getView(@IdRes id : Int) : T? {
+    private val viewHashMap = HashMap<Int, View?>()
+
+    protected fun <T : View?> getView(@IdRes id: Int): T? {
         var view = viewHashMap[id]
         if (view == null) {
             view = itemView.findViewById(id)
@@ -19,7 +20,7 @@ abstract class BaseViewHolder(itemView : View) : ViewHolder(itemView) {
         return view as T?
     }
 
-    protected fun setText(@IdRes id : Int , text : String?) {
-        (getView<View>(id) as TextView).text = text
+    protected fun setText(@IdRes id: Int, text: String?) {
+        getView<TextView>(id)?.text = text
     }
 }
