@@ -85,6 +85,7 @@ class DashboardView(context: Context, attrs: AttributeSet? = null) :
             Math.toRadians((((360.0 - openAngle) / scaleCount) * speed) + (openAngle / 2 + 90))
                 .toFloat()
 
+        //原点坐标为x,y，则x1=x+距离*cos角度，y1=y+距离*sin角度
         canvas.drawLine(
             centerX,
             centerY,
