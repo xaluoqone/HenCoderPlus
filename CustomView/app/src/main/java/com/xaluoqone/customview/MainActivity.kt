@@ -1,5 +1,6 @@
 package com.xaluoqone.customview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         speedPlus = findViewById(R.id.speedPlus)
         pieView = findViewById(R.id.pieView)
         pieSwitch = findViewById(R.id.pieSwitch)
+
+        pieView.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+        }
 
         speedPlus.setOnClickListener {
             dashboardView.speed++
