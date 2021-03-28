@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RadarActivity">
+
+    <com.xaluoqone.customview.widget.RadarView
+        android:id="@+id/radar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".5" />
+
+    <SeekBar
+        android:id="@+id/changeRadius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:max="180"
+        android:progress="120"
+        app:layout_constraintTop_toBottomOf="@id/radar" />
+
+    <SeekBar
+        android:id="@+id/changeSideCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="12dp"
+        android:max="180"
+        android:progress="6"
+        app:layout_constraintTop_toBottomOf="@id/changeRadius" />
+
+    <SeekBar
+        android:id="@+id/changeCircleCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="12dp"
+        android:max="50"
+        android:progress="6"
+        app:layout_constraintTop_toBottomOf="@id/changeSideCount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
