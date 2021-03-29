@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var intoDashboardAndPie : Button
-    private lateinit var intoRadar : Button
-    private lateinit var intoPorterDuffXfermodeTest : Button
-    private lateinit var intoSportActivity : Button
+    private lateinit var intoDashboardAndPie: Button
+    private lateinit var intoRadar: Button
+    private lateinit var intoPorterDuffXfermodeTest: Button
+    private lateinit var intoSportActivity: Button
+    private lateinit var intoTransform: Button
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -19,21 +20,26 @@ class MainActivity : AppCompatActivity() {
         intoRadar = findViewById(R.id.intoRadar)
         intoPorterDuffXfermodeTest = findViewById(R.id.intoPorterDuffXfermodeTest)
         intoSportActivity = findViewById(R.id.intoSportActivity)
+        intoTransform = findViewById(R.id.intoTransform)
 
         intoDashboardAndPie.setOnClickListener {
-            startActivity(Intent(this@MainActivity , DashboardAndPieActivity::class.java))
+            startActivity(Intent(this@MainActivity, DashboardAndPieActivity::class.java))
         }
 
         intoRadar.setOnClickListener {
-            startActivity(Intent(this@MainActivity , RadarActivity::class.java))
+            startActivity(Intent(this@MainActivity, RadarActivity::class.java))
         }
 
         intoPorterDuffXfermodeTest.setOnClickListener {
-            startActivity(Intent(this@MainActivity , PorterDuffXfermodeTestActivity::class.java))
+            startActivity(Intent(this@MainActivity, PorterDuffXfermodeTestActivity::class.java))
         }
 
         intoSportActivity.setOnClickListener {
-            startActivity(Intent(this@MainActivity , SportActivity::class.java))
+            startActivity(Intent(this@MainActivity, SportActivity::class.java))
+        }
+
+        intoTransform.setOnClickListener {
+            startActivity(Intent(this@MainActivity, TransformActivity::class.java))
         }
     }
 }

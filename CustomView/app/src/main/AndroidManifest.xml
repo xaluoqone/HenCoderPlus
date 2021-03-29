@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomView"
         tools:ignore="AllowBackup">
-        <activity android:name=".SportActivity"></activity>
+        <activity android:name=".TransformActivity"></activity>
+        <activity android:name=".SportActivity" />
         <activity android:name=".RadarActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
