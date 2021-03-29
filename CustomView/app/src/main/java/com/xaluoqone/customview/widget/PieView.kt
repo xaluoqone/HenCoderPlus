@@ -26,14 +26,12 @@ class PieView(context: Context, attrs: AttributeSet? = null) :
     var currentPieIndex = 4
         set(value) {
             field = if (value > pieAngles.size - 1) 0 else value
-            requestLayout()
             invalidate()
         }
 
     var pieRadius = 120.dp
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
 

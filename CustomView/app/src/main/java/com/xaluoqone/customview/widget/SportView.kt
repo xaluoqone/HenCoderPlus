@@ -13,7 +13,6 @@ class SportView(context : Context , attrs : AttributeSet? = null) : View(context
     var value = 0
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
     private val fontMetrics = Paint.FontMetrics()

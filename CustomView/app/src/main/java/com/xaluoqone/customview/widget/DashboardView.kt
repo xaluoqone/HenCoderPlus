@@ -13,25 +13,21 @@ class DashboardView(context: Context, attrs: AttributeSet? = null) :
     var openAngle = 120f
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
     var radius = 120.dp
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
     var scaleCount = 20
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
     var speed = 6
         set(value) {
             field = if (value > scaleCount) 0 else value
-            requestLayout()
             invalidate()
         }
 

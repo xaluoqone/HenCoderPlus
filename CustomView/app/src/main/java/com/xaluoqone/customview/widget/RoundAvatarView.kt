@@ -15,13 +15,11 @@ class RoundAvatarView(context: Context, attrs: AttributeSet? = null) : View(cont
     var bitmapId = R.mipmap.avatar
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
     var borderWidth = 5.dp
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
 

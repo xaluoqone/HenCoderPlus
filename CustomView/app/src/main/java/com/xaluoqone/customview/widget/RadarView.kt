@@ -19,7 +19,6 @@ class RadarView(context : Context , attrs : AttributeSet? = null) : View(context
     var radius = 120.dp
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
 
@@ -27,14 +26,12 @@ class RadarView(context : Context , attrs : AttributeSet? = null) : View(context
         set(value) {
             field = value
             changeDatas()
-            requestLayout()
             invalidate()
         }
 
     var circleCount = 6
         set(value) {
             field = value
-            requestLayout()
             invalidate()
         }
 

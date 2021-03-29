@@ -20,7 +20,6 @@ class TestView(context: Context, attrs: AttributeSet? = null) : View(context, at
         set(value) {
             field = if (value > 17) 0 else value
             xfermode = PorterDuffXfermode(getPorterDuffModeNumber(porterDuffModeNumber))
-            requestLayout()
             invalidate()
         }
 
