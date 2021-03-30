@@ -21,7 +21,19 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
             invalidate()
         }
 
-    var cameraRotateX = 0f
+    var cameraTopRotateX = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var cameraBottomRotateX = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var canvasBottomRotate = 30f
         set(value) {
             field = value
             invalidate()
@@ -31,14 +43,35 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
         val centerX = width / 2
         val centerY = height / 2
         canvas.withSave {
-            canvas.translate(centerX.toFloat(), centerY.toFloat())
             camera.save()
             camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)
-            camera.rotateX(cameraRotateX)
+            camera.rotateX(cameraTopRotateX)
+            translate(centerX.toFloat(), centerY.toFloat())
+            rotate(-canvasBottomRotate)
             camera.applyToCanvas(canvas)
+            clipRect(-centerX.toFloat(), -centerY.toFloat(), centerX.toFloat(), 0f)
+            rotate(canvasBottomRotate)
             camera.restore()
-            canvas.translate(-centerX.toFloat(), -centerY.toFloat())
-            canvas.drawBitmap(
+            translate(-centerX.toFloat(), -centerY.toFloat())
+            drawBitmap(
+                context.getFitBitmap(R.mipmap.avatar, radius.toInt() * 2),
+                centerX - radius,
+                centerY - radius,
+                paint
+            )
+        }
+        canvas.withSave {
+            camera.save()
+            camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)
+            camera.rotateX(cameraBottomRotateX)
+            translate(centerX.toFloat(), centerY.toFloat())
+            rotate(-canvasBottomRotate)
+            camera.applyToCanvas(canvas)
+            clipRect(-centerX.toFloat(), 0f, centerX.toFloat(), centerY.toFloat())
+            rotate(canvasBottomRotate)
+            camera.restore()
+            translate(-centerX.toFloat(), -centerY.toFloat())
+            drawBitmap(
                 context.getFitBitmap(R.mipmap.avatar, radius.toInt() * 2),
                 centerX - radius,
                 centerY - radius,

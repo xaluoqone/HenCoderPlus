@@ -14,12 +14,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/changeCameraRotateX"
+        android:id="@+id/changeCameraTopRotateX"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:max="360"
         app:layout_constraintTop_toBottomOf="@id/transformView" />
+
+    <SeekBar
+        android:id="@+id/changeCameraBottomRotateX"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:max="360"
+        app:layout_constraintTop_toBottomOf="@id/changeCameraTopRotateX" />
+
+    <SeekBar
+        android:id="@+id/changeCanvasBottomRotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:max="360"
+        app:layout_constraintTop_toBottomOf="@id/changeCameraBottomRotateX" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
