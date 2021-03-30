@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var intoPorterDuffXfermodeTest: Button
     private lateinit var intoSportActivity: Button
     private lateinit var intoTransform: Button
+    private lateinit var intoNewsActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         intoPorterDuffXfermodeTest = findViewById(R.id.intoPorterDuffXfermodeTest)
         intoSportActivity = findViewById(R.id.intoSportActivity)
         intoTransform = findViewById(R.id.intoTransform)
+        intoNewsActivity = findViewById(R.id.intoNewsActivity)
 
         intoDashboardAndPie.setOnClickListener {
             startActivity(Intent(this@MainActivity, DashboardAndPieActivity::class.java))
@@ -40,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         intoTransform.setOnClickListener {
             startActivity(Intent(this@MainActivity, TransformActivity::class.java))
+        }
+
+        intoNewsActivity.setOnClickListener {
+            startActivity(Intent(this@MainActivity, NewsActivity::class.java))
         }
     }
 }
