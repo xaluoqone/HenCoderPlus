@@ -12,10 +12,15 @@ import com.xaluoqone.customview.ex.dp
 
 class PointView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        strokeWidth = 20.dp
         strokeCap = Paint.Cap.ROUND
         color = Color.BLUE
     }
+
+    var radius = 20.dp
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var point = PointF(0f, 0f)
         set(value) {
@@ -24,6 +29,7 @@ class PointView(context: Context, attrs: AttributeSet? = null) : View(context, a
         }
 
     override fun onDraw(canvas: Canvas) {
+        paint.strokeWidth = radius
         canvas.drawPoint(point.x, point.y, paint)
     }
 }
