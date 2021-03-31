@@ -11,10 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomView"
         tools:ignore="AllowBackup">
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".AnimatorActivity" />
+        <activity android:name=".NewsActivity" />
         <activity android:name=".TransformActivity" />
         <activity android:name=".SportActivity" />
         <activity android:name=".RadarActivity" />
+        <activity android:name=".PorterDuffXfermodeTestActivity" />
+        <activity android:name=".DashboardAndPieActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PorterDuffXfermodeTestActivity" />
-        <activity android:name=".DashboardAndPieActivity" />
     </application>
 
 </manifest>
