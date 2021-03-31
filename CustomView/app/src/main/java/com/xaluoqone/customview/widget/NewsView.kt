@@ -16,17 +16,17 @@ class NewsView(context: Context, attrs: AttributeSet? = null) :
         textSize = 18.sp
     }
 
-    var imageTopPadding = 50.dp
-    var imageRightPadding = 10.dp
-    var imageLeftPadding = 10.dp
-    var imageWidth = 150.dp
+    private val imageTopPadding = 50.dp
+    private val imageRightPadding = 10.dp
+    private val imageLeftPadding = 10.dp
+    private val imageWidth = 150.dp
 
     override fun onDraw(canvas: Canvas) {
         val imageBitmap = context.getFitBitmap(R.mipmap.avatar, imageWidth.toInt())
 
         canvas.drawBitmap(
             imageBitmap,
-            width - imageBitmap.width - imageRightPadding ,
+            width - imageBitmap.width - imageRightPadding,
             imageTopPadding,
             paint
         )
