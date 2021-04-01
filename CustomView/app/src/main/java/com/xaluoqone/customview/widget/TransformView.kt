@@ -33,7 +33,7 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
             invalidate()
         }
 
-    var canvasBottomRotate = 30f
+    var canvasBottomRotate = 0f
         set(value) {
             field = value
             invalidate()

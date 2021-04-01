@@ -3,6 +3,7 @@ package com.xaluoqone.customview.widget
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.fonts.Font
 import android.util.AttributeSet
 import android.view.View
 import com.xaluoqone.customview.R
@@ -15,6 +16,8 @@ class NewsView(context: Context, attrs: AttributeSet? = null) :
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = 18.sp
     }
+
+    private val fontMetrics = Paint.FontMetrics()
 
     private val imageTopPadding = 50.dp
     private val imageRightPadding = 10.dp
@@ -35,7 +38,7 @@ class NewsView(context: Context, attrs: AttributeSet? = null) :
 
         var start = 0
         var count: Int
-        val fontMetrics = paint.fontMetrics
+        paint.getFontMetrics(fontMetrics)
         var y = -fontMetrics.top
         while (start < text.length) {
             val textRowWidth =
