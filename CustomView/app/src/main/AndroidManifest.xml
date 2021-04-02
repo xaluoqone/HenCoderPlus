@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomView"
         tools:ignore="AllowBackup">
+        <activity android:name=".EditTextActivity"></activity>
         <activity android:name=".AnimatorActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".TransformActivity" />

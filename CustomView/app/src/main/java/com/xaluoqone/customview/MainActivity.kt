@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var intoTransform: Button
     private lateinit var intoNewsActivity: Button
     private lateinit var intoAnimatorActivity: Button
+    private lateinit var intoEditTextActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         intoTransform = findViewById(R.id.intoTransform)
         intoNewsActivity = findViewById(R.id.intoNewsActivity)
         intoAnimatorActivity = findViewById(R.id.intoAnimatorActivity)
+        intoEditTextActivity = findViewById(R.id.intoEditTextActivity)
 
         intoDashboardAndPie.setOnClickListener {
             startActivity(Intent(this@MainActivity, DashboardAndPieActivity::class.java))
@@ -52,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
         intoAnimatorActivity.setOnClickListener {
             startActivity(Intent(this@MainActivity, AnimatorActivity::class.java))
+        }
+
+        intoEditTextActivity.setOnClickListener {
+            startActivity(Intent(this@MainActivity, EditTextActivity::class.java))
         }
     }
 }

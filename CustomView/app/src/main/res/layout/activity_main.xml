@@ -63,10 +63,12 @@
         android:text="into animator activity" />
 
     <Button
+        android:id="@+id/intoEditTextActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp" />
+        android:layout_marginEnd="12dp"
+        android:text="into edit text activity" />
 
     <Button
         android:layout_width="match_parent"
