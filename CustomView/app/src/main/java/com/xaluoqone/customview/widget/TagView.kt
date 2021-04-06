@@ -14,12 +14,12 @@ class TagView(context: Context, attrs: AttributeSet? = null) : View(context, att
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = 19.sp
     }
-    private var text: String
     private val bounds = Rect()
     private val fontMetrics = Paint.FontMetrics()
     private var selfWidth = 0
     private var selfHeight = 0
-    private var radius: Float
+    var radius: Float
+    var text: String
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TagView)
