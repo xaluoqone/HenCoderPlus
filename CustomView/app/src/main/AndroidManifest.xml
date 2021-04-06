@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomView"
         tools:ignore="AllowBackup">
-        <activity android:name=".CustomSizeActivity"></activity>
+        <activity android:name=".TagLayoutActivity"></activity>
+        <activity android:name=".CustomSizeActivity" />
         <activity android:name=".EditTextActivity" />
         <activity android:name=".AnimatorActivity" />
         <activity android:name=".NewsActivity" />
