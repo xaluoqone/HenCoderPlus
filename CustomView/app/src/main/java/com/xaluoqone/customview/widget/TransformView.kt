@@ -39,6 +39,8 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
             invalidate()
         }
 
+    private val bitmap = context.getFitBitmap(R.mipmap.avatar, radius.toInt() * 2)
+
     override fun onDraw(canvas: Canvas) {
         val centerX = width / 2
         val centerY = height / 2
@@ -54,7 +56,7 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
             camera.restore()
             translate(-centerX.toFloat(), -centerY.toFloat())
             drawBitmap(
-                context.getFitBitmap(R.mipmap.avatar, radius.toInt() * 2),
+                bitmap,
                 centerX - radius,
                 centerY - radius,
                 paint
@@ -72,7 +74,7 @@ class TransformView(context: Context, attrs: AttributeSet? = null) :
             camera.restore()
             translate(-centerX.toFloat(), -centerY.toFloat())
             drawBitmap(
-                context.getFitBitmap(R.mipmap.avatar, radius.toInt() * 2),
+                bitmap,
                 centerX - radius,
                 centerY - radius,
                 paint
