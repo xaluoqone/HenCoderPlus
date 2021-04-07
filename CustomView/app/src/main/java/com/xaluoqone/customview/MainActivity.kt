@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var intoEditTextActivity: Button
     private lateinit var intoCustomSizeActivity: Button
     private lateinit var intoTagLayoutActivity: Button
+    private lateinit var intoScalableImageViewActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         intoEditTextActivity = findViewById(R.id.intoEditTextActivity)
         intoCustomSizeActivity = findViewById(R.id.intoCustomSizeActivity)
         intoTagLayoutActivity = findViewById(R.id.intoTagLayoutActivity)
+        intoScalableImageViewActivity = findViewById(R.id.intoScalableImageViewActivity)
 
         intoDashboardAndPie.setOnClickListener {
             startActivity(Intent(this@MainActivity, DashboardAndPieActivity::class.java))
@@ -70,6 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         intoTagLayoutActivity.setOnClickListener {
             startActivity(Intent(this@MainActivity, TagLayoutActivity::class.java))
+        }
+
+        intoScalableImageViewActivity.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ScalableImageViewActivity::class.java))
         }
     }
 }

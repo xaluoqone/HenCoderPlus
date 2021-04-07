@@ -3,7 +3,6 @@ package com.xaluoqone.customview.widget
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.fonts.Font
 import android.util.AttributeSet
 import android.view.View
 import com.xaluoqone.customview.R
@@ -16,17 +15,16 @@ class NewsView(context: Context, attrs: AttributeSet? = null) :
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = 18.sp
     }
+    private val imageWidth = 150.dp
+    private val imageBitmap = context.getFitBitmap(R.mipmap.avatar, imageWidth.toInt())
 
     private val fontMetrics = Paint.FontMetrics()
 
     private val imageTopPadding = 50.dp
     private val imageRightPadding = 10.dp
     private val imageLeftPadding = 10.dp
-    private val imageWidth = 150.dp
 
     override fun onDraw(canvas: Canvas) {
-        val imageBitmap = context.getFitBitmap(R.mipmap.avatar, imageWidth.toInt())
-
         canvas.drawBitmap(
             imageBitmap,
             width - imageBitmap.width - imageRightPadding,
