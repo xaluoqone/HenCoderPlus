@@ -12,7 +12,7 @@ import com.xaluoqone.customview.ex.sp
 
 class TagView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = 19.sp
+        textSize = (15..25).random().sp
     }
     private val bounds = Rect()
     private val fontMetrics = Paint.FontMetrics()
@@ -29,7 +29,7 @@ class TagView(context: Context, attrs: AttributeSet? = null) : View(context, att
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         paint.getTextBounds(text, 0, text.length, bounds)
         paint.getFontMetrics(fontMetrics)
         selfWidth = bounds.width() + paddingStart + paddingEnd
@@ -42,12 +42,13 @@ class TagView(context: Context, attrs: AttributeSet? = null) : View(context, att
     }
 
     override fun onDraw(canvas: Canvas) {
-        paint.color = Color.parseColor("#ff0000")
+        paint.color =
+            Color.argb(255, (50..160).random(), (50..160).random(), (50..160).random())
         canvas.drawRoundRect(
             0f,
             0f,
-            selfWidth.toFloat(),
-            selfHeight.toFloat(),
+            width.toFloat(),
+            height.toFloat(),
             radius,
             radius,
             paint

@@ -15,7 +15,7 @@ class TagLayout(context: Context, attrs: AttributeSet? = null) :
 
     @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         var lineHeight = 0
         val selfWidth = MeasureSpec.getSize(widthMeasureSpec)
         val selfHeight = MeasureSpec.getSize(heightMeasureSpec)
@@ -23,8 +23,10 @@ class TagLayout(context: Context, attrs: AttributeSet? = null) :
         var finalWidth = 0
         var finalHeight = 0
         children.forEachIndexed { index, it ->
-            getChildMeasureSpec(it, selfWidth, selfHeight)
-            if (nextChildX + it.measuredWidth + it.marginStart + it.marginEnd > selfWidth) {
+            val marginStartAndEnd = it.marginStart + it.marginEnd
+            getChildMeasureSpec(it, (selfWidth - marginStartAndEnd), selfHeight)
+
+            if (nextChildX + it.measuredWidth + marginStartAndEnd > selfWidth) {
                 nextChildX = 0
                 finalHeight += lineHeight
                 lineHeight = 0
