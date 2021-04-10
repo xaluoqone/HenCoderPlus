@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
@@ -31,6 +32,8 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) : View(co
     private var extraScale = 2f
     private val imageGestureListener = ImageGestureListener()
     private val gestureDetector = GestureDetectorCompat(context, imageGestureListener)
+    private val imageScaleGestureListener = ImageScaleGestureListener()
+    private val scaleGestureDetector = ScaleGestureDetector(context, imageScaleGestureListener)
     private val scroller = OverScroller(context)
     private val flingRunnable = FlingRunnable()
 
@@ -60,7 +63,7 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) : View(co
     }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.translate(offsetX, offsetY)
+        canvas.translate(offsetX * scaleProgress, offsetY * scaleProgress)
         val scale = smallScale + (bigScale - smallScale) * scaleProgress
         canvas.scale(scale, scale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, defaultOffsetX, defaultOffsetY, paint)
@@ -77,6 +80,9 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) : View(co
         override fun onDoubleTap(e: MotionEvent): Boolean {
             isBigSale = !isBigSale
             if (isBigSale) {
+                offsetX = (e.x - width / 2) * (1 - bigScale / smallScale)
+                offsetY = (e.y - height / 2) * (1 - bigScale / smallScale)
+                fixOffsets()
                 scaleAnimator.start()
             } else {
                 scaleAnimator.reverse()
@@ -100,14 +106,18 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) : View(co
         ): Boolean {
             if (isBigSale) {
                 offsetX -= distanceX
-                offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
-                offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
                 offsetY -= distanceY
-                offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
-                offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
+                fixOffsets()
                 invalidate()
             }
             return false
+        }
+
+        private fun fixOffsets() {
+            offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
+            offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
+            offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
+            offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
         }
 
         override fun onFling(
@@ -133,6 +143,20 @@ class ScalableImageView(context: Context, attrs: AttributeSet? = null) : View(co
                 ViewCompat.postOnAnimation(this@ScalableImageView, flingRunnable)
             }
             return false
+        }
+    }
+
+    private inner class ImageScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener {
+        override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+            return true
+        }
+
+        override fun onScale(detector: ScaleGestureDetector?): Boolean {
+            return false
+        }
+
+        override fun onScaleEnd(detector: ScaleGestureDetector?) {
+
         }
     }
 
